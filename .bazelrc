@@ -1,1 +1,2 @@
 common --remote_cache=grpc://100.69.120.2:8989
+common --experimental_allow_tags_propagation
