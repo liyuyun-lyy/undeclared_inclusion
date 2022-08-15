@@ -1,8 +1,17 @@
 cc_library(
+    name = "locator",
+    hdrs = ["locator.h"],
+    copts = ["-Werror"],
+    include_prefix = "indexlib/document",
+    visibility = ["//visibility:public"],
+    alwayslink = True,
+)
+
+cc_library(
   name = "hello",
   srcs = glob(
     [
-      "hello.cc",
+      "*.cpp",
     ],
   ),
   hdrs = glob(
@@ -13,14 +22,10 @@ cc_library(
       "locator.h",
     ],
   ),
+  include_prefix = "indexlib/document",
+  visibility = ["//visibility:public"],
   deps = [
     ":locator",
   ],
-  include_prefix = "indexlib/document",
-)
-
-cc_library(
-    name = "locator",
-    hdrs = ["locator.h"],
-    include_prefix = "indexlib/document",
+  alwayslink = True,
 )
