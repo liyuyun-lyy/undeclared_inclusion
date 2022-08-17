@@ -1,5 +1,5 @@
 #include <iostream>
-#include "indexlib/document/locator.h"
+#include "indexlib/indexlib.h"
 int main() {
     std::cout << "hello" << std::endl;
     return 0;

@@ -1,0 +1,10 @@
+cc_library(
+  name = "indexlib_h",
+  hdrs = [
+    "indexlib.h",
+  ],
+  copts = ["-Werror"],
+  include_prefix = "indexlib",
+  visibility = ["//visibility:public"],
+  deps = [],
+)
