@@ -3,14 +3,15 @@ common --experimental_cc_shared_library
 common --incompatible_new_actions_api=false
 common --incompatible_restrict_string_escapes=false
 common --show_timestamps
+common --incompatible_legacy_local_fallback=false
+#common --remote_local_fallback_strategy=sandboxed
 
 fetch:downloader --experimental_remote_downloader=grpc://com.taobao.search.bazel.server:9092 --remote_cache=grpc://com.taobao.search.bazel.server:9092
 build --remote_cache=http://com.taobao.search.bazel.server:8080 --remote_local_fallback
 
 # remote cache conflicts with remote executor.
-build:remote --remote_executor=grpc://com.taobao.search.bazel.master:8989 --remote_cache=grpc://com.taobao.search.bazel.master:8989
+build:remote --remote_executor=grpc://localhost:8980 --remote_cache=grpc://localhost:8980
 build:remote --jobs=500 --local_test_jobs=HOST_CPUS*.8 --build_request_id="https://host?ENSURE_OUTPUTS_PRESENT=true#00000000-0000-0000-0000-000000000000"
-build:remote --spawn_strategy=remote,sandboxed
 common:buildfarm --remote_cache=grpc://com.taobao.search.bazel.master:8989
 
 # bep for flaky tests filter etc
@@ -26,7 +27,7 @@ coverage:cicd -k --test_output=summary
 
 build --action_env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/taobao/java/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/X11R6/bin
 build --incompatible_disable_nocopts=false
-build --keep_going
+#build --keep_going
 # important for cache signature, more info: https://work.aone.alibaba-inc.com/issue/38160630
 build --define indexlib_coroutine=yes
 build --action_env=BAZEL_CXXOPTS="-fcoroutines"

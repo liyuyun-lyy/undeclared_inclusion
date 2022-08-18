@@ -1,0 +1,4 @@
+cp /home/admin/undeclared_inclusion/aios/storage/indexlib/indexlib/BUILD2 /home/admin/undeclared_inclusion/aios/storage/indexlib/indexlib/BUILD
+bazel --host_jvm_args=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=100.81.212.165:5005 build -s :hello --config=clang --config=debug --config=remote --noremote_accept_cached --remote_executor=grpc://localhost:8980 --experimental_remote_grpc_log=$HOME/remote.log
+sudo cp bazel-out/k8-fastbuild/bin/_objs/hello/hello.pic.d /tmp/${prefix}hello.pic.d.2
+(cd $HOME/tools_remote && bazel-bin/remote_client --grpc_log $HOME/remote.log printlog > /tmp/${prefix}remote2.log)
