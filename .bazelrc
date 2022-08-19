@@ -1,2 +1,5 @@
-common --remote_cache=grpc://100.69.120.2:8989
-#common --experimental_allow_tags_propagation
+build --remote_default_exec_properties=compiler=clang11
+build --action_env=CC=/usr/bin/clang
+build --action_env=CXX=/usr/bin/clang++
+build --define compiler_type=clang++
+build --remote_local_fallback

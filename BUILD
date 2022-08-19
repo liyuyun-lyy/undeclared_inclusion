@@ -1,31 +1,9 @@
-cc_library(
-    name = "locator",
-    hdrs = ["locator.h"],
-    copts = ["-Werror"],
-    include_prefix = "indexlib/document",
-    visibility = ["//visibility:public"],
-    alwayslink = True,
-)
-
-cc_library(
+cc_binary(
   name = "hello",
-  srcs = glob(
-    [
-      "*.cpp",
-    ],
-  ),
-  hdrs = glob(
-    [
-      "*.h",
-    ],
-    exclude = [
-      "locator.h",
-    ],
-  ),
-  include_prefix = "indexlib/document",
-  visibility = ["//visibility:public"],
-  deps = [
-    ":locator",
+  srcs = [
+    "hello.cpp"
   ],
-  alwayslink = True,
+  deps = [
+    "//aios/storage/indexlib/indexlib/index",
+  ],
 )

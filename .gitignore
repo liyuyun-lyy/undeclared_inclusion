@@ -1,5 +1,4 @@
 bazel-bin
 bazel-out
 bazel-testlogs
-bazel-undeclared_inclusion
-
+bazel-undeclared_inclusion_demo
