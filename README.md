@@ -1,1 +1,1 @@
-# undeclared_inclusion
+test undeclared_inclusions
